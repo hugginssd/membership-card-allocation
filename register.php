@@ -16,16 +16,27 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 <?php global $error; echo $error; ?>
 	<center>
 		<form action= "reg_action.php" method= "post" id="myform" >
-			<div class="form-group row col-md-4">
-				<div class="form-group">
-					<div class="form-group col-md-6">
-						<label for="inputEmail4">Email</label>
-						<input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-					</div>
-					<div class="form-group col-md-6">
-						<label for="inputPassword4">Password</label>
-						<input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-					</div>
+			<div class="form-group col-sm-6">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputFirstname4">Firstname</label>
+								<input type="firstname" class="form-control" id="inputFirstname4" placeholder="Firstname">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputPassword4">Lastname</label>
+								<input type="lastname" class="form-control" id="inputLastname4" placeholder="Lastname">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputEmail4">Email</label>
+								<input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputPassword4">Password</label>
+								<input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+							</div>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputAddress">Address</label>
@@ -61,7 +72,7 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 						</div>
 					</div>
 					<button type="submit" class="btn btn-primary">Sign in</button>
-			</div>
+			</div>	
 			 <!-- <div class="form-group col-md-4">
 					<div class="form-group row">
 								<label for="inputFirstname3" class="col-sm-2 col-form-label">Firstname</label>
