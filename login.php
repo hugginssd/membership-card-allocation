@@ -8,7 +8,7 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 ?>
 <br>
 <center>
-	<legend> <h3>Login for Voting </h3></legend> 
+	<legend> <h3>Login </h3></legend> 
 		<br>
 </center>
 			

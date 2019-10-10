@@ -8,38 +8,41 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 }
 ?>
 <br>
-<br>
 	<center>
 		<legend> <h3> Register </h3></legend> 
 	</center>
+	<br>
+	<br>
 <?php global $nam; echo $nam; ?> 
 <?php global $error; echo $error; ?>
 	<center>
-		<form action= "reg_action.php" method= "post" id="myform" >
+		<form action= "register_action.php" method= "post" id="myform" >
 			<div class="form-group col-sm-6">
+					
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="inputFirstname4">Firstname</label>
+								<!-- <label for="inputFirstname4">Firstname</label> -->
 								<input type="firstname" class="form-control" id="inputFirstname4" placeholder="Firstname">
 							</div>
 							<div class="form-group col-md-6">
-								<label for="inputPassword4">Lastname</label>
+								<!-- <label for="inputPassword4">Lastname</label> -->
 								<input type="lastname" class="form-control" id="inputLastname4" placeholder="Lastname">
 							</div>
 						</div>
+						<br>
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="inputDate4">DOB</label>
+								<!-- <label for="inputDate4">DOB</label> -->
 								<input type="date" name="dateOfBirth" class="form-control" max="2001-01-01" min="1000-01-01" id="inputDate4" placeholder="Email">
 							</div>
 							<div class="form-group col-md-6">
-								<label for="inputIdNumber4">ID Number</label>
+								<!-- <label for="inputIdNumber4">ID Number</label> -->
 								<input type="idnumber" class="form-control" id="inputIdnumber4" placeholder="00-000000X00">
 							</div>
 						</div>
 						<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="inputGender4">Gender</label>
+									<!-- <label for="inputGender4">Gender</label> -->
 									<select id="inputGender" class="form-control">
 										<option selected>Choose...</option>
 										<option>Male</option>
@@ -48,61 +51,61 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 									</select>
 								</div>
 							<div class="form-group col-md-6">
-								<label for="inputIdWing4">Wing</label>
+								<!-- <label for="inputIdWing4">Wing</label> -->
 								<input type="wing" class="form-control" id="inputWing4" placeholder="Wing e.g Youth, Women">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="inputWard4">Ward</label>
+								<!-- <label for="inputWard4">Ward</label> -->
 								<input type="ward" class="form-control" id="inputWard4" placeholder="Ward">
 							</div>
 							<div class="form-group col-md-6">
-								<label for="inputCell4">Cell</label>
+								<!-- <label for="inputCell4">Cell</label> -->
 								<input type="cell" class="form-control" id="inputCell4" placeholder="Cell">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="inputContactNumber4">Contact number</label>
+								<!-- <label for="inputContactNumber4">Contact number</label> -->
 								<input type="contactnumber" class="form-control" id="inputContactNumber4" placeholder="Contact number">
 							</div>
 							<div class="form-group col-md-6">
-								<label for="inputCell4">Cell</label>
+								<!-- <label for="inputCell4">Cell</label> -->
 								<input type="cell" class="form-control" id="inputCell4" placeholder="Cell">
 							</div>
 						</div>
-					<div class="form-group">
-						<label for="inputAddress">Address</label>
-						<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-					</div>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-						<label for="inputCity">City</label>
-						<input type="text" class="form-control" id="inputCity">
+						<div class="form-group">
+							<!-- <label for="inputAddress">Address</label> -->
+							<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
 						</div>
-						<div class="form-group col-md-4">
-						<label for="inputState">Province</label>
-						<select id="inputState" class="form-control">
-							<option selected>Choose...</option>
-							<option>Harare</option>
-							<option>Mashonaland Central</option>
-							<option>Mashonaland East</option>
-							<option>Mashonaland West</option>
-							<option>Manicaland</option>
-							<option>Masvingo</option>
-							<option>Matebeleland North</option>
-							<option>Matebeleland South</option>
-							<option>Midlands</option>
-							<option>Bulawayo</option>
-						</select>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+							<!-- <label for="inputCity">City</label> -->
+							<input type="text" class="form-control" id="inputCity" placeholder="City">
+							</div>
+							<div class="form-group col-md-4">
+							<!-- <label for="inputState">Province</label> -->
+							<select id="inputState" class="form-control">
+								<option selected>Choose Province...</option>
+								<option>Harare</option>
+								<option>Mashonaland Central</option>
+								<option>Mashonaland East</option>
+								<option>Mashonaland West</option>
+								<option>Manicaland</option>
+								<option>Masvingo</option>
+								<option>Matebeleland North</option>
+								<option>Matebeleland South</option>
+								<option>Midlands</option>
+								<option>Bulawayo</option>
+							</select>
+							</div>
+							<div class="form-group col-md-2">
+							<!-- <label for="inputZip">Zip</label> -->
+							<input type="text" class="form-control" id="inputZip" placeholder="Zip code"
+							</div>
 						</div>
-						<div class="form-group col-md-2">
-						<label for="inputZip">Zip</label>
-						<input type="text" class="form-control" id="inputZip">
-						</div>
-					</div>
-					<button type="submit" class="btn btn-primary">Sign in</button>
+					<button type="submit" class="btn btn-primary">Register</button>
 					</div>
 			</div>	
 			 <!-- <div class="form-group col-md-4">
