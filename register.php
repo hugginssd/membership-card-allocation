@@ -4,7 +4,7 @@ if(!isset($_SESSION)) {
 session_start();
 }
 if (isset($_SESSION['SESS_NAME'])!="") {
-	header("Location: voter.php");
+	header("Location: member.php");
 }
 ?>
 <br>
@@ -29,22 +29,52 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="inputEmail4">Email</label>
-								<input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+								<label for="inputDate4">DOB</label>
+								<input type="date" name="dateOfBirth" class="form-control" max="2001-01-01" min="1000-01-01" id="inputDate4" placeholder="Email">
 							</div>
 							<div class="form-group col-md-6">
-								<label for="inputPassword4">Password</label>
-								<input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+								<label for="inputIdNumber4">ID Number</label>
+								<input type="idnumber" class="form-control" id="inputIdnumber4" placeholder="00-000000X00">
 							</div>
 						</div>
-					</div>
+						<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="inputGender4">Gender</label>
+									<select id="inputGender" class="form-control">
+										<option selected>Choose...</option>
+										<option>Male</option>
+										<option>Female</option>
+										<option>Other</option>
+									</select>
+								</div>
+							<div class="form-group col-md-6">
+								<label for="inputIdWing4">Wing</label>
+								<input type="wing" class="form-control" id="inputWing4" placeholder="Wing e.g Youth, Women">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputWard4">Ward</label>
+								<input type="ward" class="form-control" id="inputWard4" placeholder="Ward">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputCell4">Cell</label>
+								<input type="cell" class="form-control" id="inputCell4" placeholder="Cell">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputContactNumber4">Contact number</label>
+								<input type="contactnumber" class="form-control" id="inputContactNumber4" placeholder="Contact number">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputCell4">Cell</label>
+								<input type="cell" class="form-control" id="inputCell4" placeholder="Cell">
+							</div>
+						</div>
 					<div class="form-group">
 						<label for="inputAddress">Address</label>
 						<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-					</div>
-					<div class="form-group">
-						<label for="inputAddress2">Address 2</label>
-						<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
@@ -52,10 +82,19 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 						<input type="text" class="form-control" id="inputCity">
 						</div>
 						<div class="form-group col-md-4">
-						<label for="inputState">State</label>
+						<label for="inputState">Province</label>
 						<select id="inputState" class="form-control">
 							<option selected>Choose...</option>
-							<option>...</option>
+							<option>Harare</option>
+							<option>Mashonaland Central</option>
+							<option>Mashonaland East</option>
+							<option>Mashonaland West</option>
+							<option>Manicaland</option>
+							<option>Masvingo</option>
+							<option>Matebeleland North</option>
+							<option>Matebeleland South</option>
+							<option>Midlands</option>
+							<option>Bulawayo</option>
 						</select>
 						</div>
 						<div class="form-group col-md-2">
@@ -63,15 +102,8 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 						<input type="text" class="form-control" id="inputZip">
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="form-check">
-						<input class="form-check-input" type="checkbox" id="gridCheck">
-						<label class="form-check-label" for="gridCheck">
-							Check me out
-						</label>
-						</div>
-					</div>
 					<button type="submit" class="btn btn-primary">Sign in</button>
+					</div>
 			</div>	
 			 <!-- <div class="form-group col-md-4">
 					<div class="form-group row">
