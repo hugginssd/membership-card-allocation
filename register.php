@@ -18,8 +18,7 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 	<center>
 		<form action= "register_action.php" method= "post" id="myform" >
 			<div class="form-group col-sm-6">
-					
-						<div class="form-row">
+					<div class="form-row">
 							<div class="form-group col-md-6">
 								<!-- <label for="inputFirstname4">Firstname</label> -->
 								<input type="firstname" class="form-control" id="inputFirstname4" placeholder="Firstname">

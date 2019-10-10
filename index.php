@@ -8,7 +8,7 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 <br>
     <div class="alert alert-success" role="alert">
         <h4 class="alert-heading">Welcome to Online Membership Card Allocation!</h4>
-             <p>This system allows all registered users to vote for their favorite Presidential Canditate.</p>
+             <p>This system allows all registered users to request for their Membership Card from the Party.</p>
              <p>
                 Last, all you have to do is add your name and email address, so we can send you your admin link, 
                 and then send it off to your guests or participants. You can add their email addresses in the box on the
