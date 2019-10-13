@@ -9,7 +9,7 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 ?>
 <br>
 	<center>
-		<legend> <h3> Register </h3></legend> 
+		<legend> <h3 class="text-success"> Register </h3></legend> 
 	</center>
 	<br>
 	<br>
@@ -21,11 +21,11 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 					<div class="form-row">
 							<div class="form-group col-md-6">
 								<!-- <label for="inputFirstname4">Firstname</label> -->
-								<input type="firstname" class="form-control" id="inputFirstname4" placeholder="Firstname">
+								<input type="firstname" name="firstname" class="form-control" id="inputFirstname4" placeholder="Firstname">
 							</div>
 							<div class="form-group col-md-6">
 								<!-- <label for="inputPassword4">Lastname</label> -->
-								<input type="lastname" class="form-control" id="inputLastname4" placeholder="Lastname">
+								<input type="lastname" name="lastname"class="form-control" id="inputLastname4" placeholder="Lastname">
 							</div>
 						</div>
 						<br>
@@ -36,13 +36,13 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 							</div>
 							<div class="form-group col-md-6">
 								<!-- <label for="inputIdNumber4">ID Number</label> -->
-								<input type="idnumber" class="form-control" id="inputIdnumber4" placeholder="00-000000X00">
+								<input type="idnumber" name="idnumber" class="form-control" id="inputIdnumber4" placeholder="00-000000X00">
 							</div>
 						</div>
 						<div class="form-row">
 								<div class="form-group col-md-6">
 									<!-- <label for="inputGender4">Gender</label> -->
-									<select id="inputGender" class="form-control">
+									<select id="inputGender" name="gender" class="form-control">
 										<option selected>Choose...</option>
 										<option>Male</option>
 										<option>Female</option>
@@ -51,13 +51,13 @@ if (isset($_SESSION['SESS_NAME'])!="") {
 								</div>
 							<div class="form-group col-md-6">
 								<!-- <label for="inputIdWing4">Wing</label> -->
-								<input type="wing" class="form-control" id="inputWing4" placeholder="Wing e.g Youth, Women">
+								<input type="wing" name="wing" class="form-control" id="inputWing4" placeholder="Wing e.g Youth, Women">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
 								<!-- <label for="inputWard4">Ward</label> -->
-								<input type="ward" class="form-control" id="inputWard4" placeholder="Ward">
+								<input type="ward" name="ward" class="form-control" id="inputWard4" placeholder="Ward">
 							</div>
 							<div class="form-group col-md-6">
 								<!-- <label for="inputCell4">Cell</label> -->
