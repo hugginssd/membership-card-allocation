@@ -14,7 +14,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-					<a class="navbar-brand text-white" href="index.php">Membership Card Allocation</a>
+					<a class="navbar-brand text-white" href="index.php"><img src="img/zanu.jpg" alt="Online Tendering System" style="width:48px;height:32px;"></a>
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item active">
 						<a class="nav-link text-white" href="index.php">Home <span class="sr-only">(current)</span></a>
