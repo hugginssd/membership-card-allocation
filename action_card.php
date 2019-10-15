@@ -1,5 +1,5 @@
 <?php
-include 'auth.php';
+//include 'auth.php';
 include 'header_admin.php';
 ?>
 <!DOCTYPE html>
@@ -160,7 +160,7 @@ $(document).ready(function(){
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-8"><h2>Employee <b>Details</b></h2></div>
+                    <div class="col-sm-8"><h2><b>Requesition details</b></h2></div>
                     <div class="col-sm-4">
                         <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
                     </div>
@@ -169,44 +169,52 @@ $(document).ready(function(){
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Department</th>
-                        <th>Phone</th>
-                        <th>Actions</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>ID Number</th>
+                        <th>Gender</th>
+                        <th>Contact number</th>
+                        <th>Date requested</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>John Doe</td>
-                        <td>Administration</td>
-                        <td>(171) 555-2222</td>
+                <?php 
+                  include "connection.php";
+                  $rs = mysqli_query($con,"SELECT `tblmembers`.`firstname` AS firstname, `tblmembers`.`lastname` AS lastname, `tblmembers`.`idnumber` AS idnumber, 
+                                                    `tblmembers`.`gender` AS gender,`tblmembers`.`contactnumber` AS contactnumber, `tblrequest`.`dateofrequest` AS daterequested,
+                                                    `tblrequest`.`status` AS status 
+                                                    FROM `tblmembers` 
+                                                    INNER JOIN `tblrequest` 
+                                                    ON `tblrequest`.`memberid` = `tblmembers`.`id`
+                                                    WHERE `tblrequest`.`status` = 'Pending'");
+                  while ($row = mysqli_fetch_object($rs)){
+                          $firstname=$row->firstname;
+                          $lastname=$row->lastname;
+                          $idnumber=$row->idnumber;
+                          $gender=$row->gender;
+                          $contactnumber=$row->contactnumber;
+                          $daterequested=$row->daterequested;
+                          $status=$row->status;
+                    ?>
+            
+                      <tr>
+                        <td><?php echo $firstname; ?></td>
+                        <td><?php echo $lastname; ?></td>
+                        <td><?php echo $idnumber; ?></td>
+                        <td><?php echo $gender; ?></td>
+                        <td><?php echo $contactnumber; ?></td>
+                        <td><?php echo $daterequested; ?></td>
+                        <td><?php echo $status; ?></td>
                         <td>
-							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+						    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                             <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Peter Parker</td>
-                        <td>Customer Service</td>
-                        <td>(313) 555-5735</td>
-                        <td>
-							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Fran Wilson</td>
-                        <td>Human Resources</td>
-                        <td>(503) 555-9931</td>
-                        <td>
-							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>      
                 </tbody>
+                <?php } ?>
             </table>
         </div>
     </div>     

@@ -9,7 +9,7 @@ if(isset($_POST['login'])) {
 	$username = mysqli_real_escape_string($con,$username);
 	$password = mysqli_real_escape_string($con,$password);
 
-$sql = mysqli_query($con, 'SELECT * FROM `tblusers` WHERE username="'.$_POST['username'].'"  AND password="'.$_POST['password'].'" AND status="ACTIVE" ' );
+$sql = mysqli_query($con, 'SELECT * FROM `tblusers` WHERE username="'.$_POST['username'].'"  AND password="'.$_POST['password'].'"' );
 if (mysqli_num_rows($sql) >0 ) {
 	$member =  mysqli_fetch_assoc($sql);
 	$_SESSION['SESS_NAME'] = $member['username'];
@@ -18,7 +18,7 @@ if (mysqli_num_rows($sql) >0 ) {
 	if($member['rank']=='admin'){
 			header("location: admin.php");
 			}
-			else if($member['rank']=='voter'){
+			else if($member['rank']=='youth'){
 			header("location: youth.php");
 			}
 }

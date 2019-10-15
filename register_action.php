@@ -26,55 +26,70 @@ $gender = mysqli_real_escape_string($con, $_POST['gender']);
 
 $wing = mysqli_real_escape_string($con,$_POST['wing']);
 $ward = mysqli_real_escape_string($con,$_POST['ward']);
-$website = mysqli_real_escape_string($con,$_POST['website']);
+$cell = mysqli_real_escape_string($con,$_POST['cell']);
 $contactnumber = mysqli_real_escape_string($con, $_POST['contactnumber']);
-$referencenumber = mysqli_real_escape_string($con,$_POST['referencenumber']);
-$address = mysqli_real_escape_string($con,$_POST['address']);
-$city = mysqli_real_escape_string($con, $_POST['city']);
-$province = mysqli_real_escape_string($con, $_POST['province']);
+$website = mysqli_real_escape_string($con,$_POST['website']);
+$username = mysqli_real_escape_string($con,$_POST['email']);
+$password = mysqli_real_escape_string($con, $_POST['password']);
+$address = mysqli_real_escape_string($con, $_POST['address']);
+$city = mysqli_real_escape_string($con,$_POST['city']);
+$province = mysqli_real_escape_string($con,$_POST['province']);
 $zip = mysqli_real_escape_string($con,$_POST['zip']);
-$rank = "";
+$rank = "youth";
 $pin = 4912;
 
 
 
-$sq = mysqli_query($con, 'SELECT regnumber FROM tblapplicants WHERE regnumber="'.$_POST['regnumber'].'"');
+$sq = mysqli_query($con, 'SELECT * FROM `tblmembers` WHERE `idnumber`="'.$_POST['idnumber'].'"');
 $exist = mysqli_num_rows($sq);
-	if($pin==4912)
-	{
-      $rank = "admin";
-	}
-	else{
-	  $rank = "voter";
-	}
-	echo 'Done1';
+	
+	
 		if($exist>=1){
 			$nam="<center><h5><font color='#DAAF37'>The applicant already exist, create another one.</h5></center></font>";
 			unset($username);
 			include('register.php');
 			exit();
 		}
-		echo 'Done2';
-			// $sql = mysqli_query($con, 'INSERT INTO tblapplicants(companyname, regnumber, trade, cr14number, cr7number, taxclearancenumber, dateregistered, contactnumber, `address`, referencenumber) VALUES ("'.$_POST['companyname'].'","'.$_POST['regnumber'].'","'.$_POST['inputBusiness'].'","'.$_POST['cr14number'].'","'.$_POST['cr7number'].'","'.$_POST['taxclearance'].'","'.$_POST['date'].'","'.$_POST['contactnumber'].'","'.$_POST['address'].'","'.$_POST['referencenumber'].'")');
-			// if (!$sql)
-			// { 
-			// 	echo 'Done post';
-			// 		die (mysqli_error($con));
-			// 	echo 'Done post1';
-			// }//start from here
-			echo 'Done3';
-			$sql2 = mysqli_query($con, 'INSERT INTO `tblapplicants`(`companyname`, `regnumber`, `trade`, `cr14number`, `cr7number`, `taxclearancenumber`, `dateregistered`, `contactnumber`, `address`, `referencenumber`,`password`) 
-												VALUES ("'.$_POST['companyname'].'","'.$_POST['regnumber'].'","'.$_POST['inputBusiness'].'","'.$_POST['cr14number'].'","'.$_POST['cr7number'].'",
-												"'.$_POST['taxclearance'].'","'.$_POST['date'].'","'.$_POST['contactnumber'].'",
-												"'.$_POST['address'].'","'.$_POST['referencenumber'].'","'.$_POST['city'].'")'); 
+		//create user
+			$sql = mysqli_query($con, 'INSERT INTO `tblusers`( `username`, `password`) 
+													VALUES ("'.$_POST['email'].'","'.$_POST['password'].'")');
+			if (!$sql)
+			{ 
+					
+					die (mysqli_error($con));
+			}
+			//create member
+			$sql2 = mysqli_query($con, 'INSERT INTO `tblmembers`(`firstname`, `lastname`, `dateofbirth`, `idnumber`, `gender`, `wing`, `address`, `province`, `ward`, `cell`, `contactnumber`,`username`)
+												 VALUES ("'.$_POST['firstname'].'","'.$_POST['lastname'].'","'.$_POST['dateOfBirth'].'","'.$_POST['idnumber'].'",
+												 "'.$_POST['gender'].'","'.$_POST['wing'].'","'.$_POST['address'].'","'.$_POST['province'].'","'.$_POST['ward'].'",
+												 "'.$_POST['cell'].'","'.$_POST['contactnumber'].'","'.$_POST['email'].'")'); 
 			if (!$sql2) 
 			{ 
 				die (mysqli_error($con));
 			}
+			//select memberid
+			$sqid = mysqli_query($con, 'SELECT * FROM `tblmembers` WHERE `idnumber`="'.$_POST['idnumber'].'"');
+			if (mysqli_num_rows($sqid)!= 0 ) {
+				while($mb2=mysqli_fetch_object($sqid))
+							{	
+								$memberid=$mb2->id;
+							}
+			//submit request
+			$sql1 = mysqli_query($con, 'INSERT INTO `tblrequest`(`dateofrequest`, `memberid`) 
+														VALUES (CURDATE(),'.$memberid.')');
+			if (!$sql1)
+			{ 
+					die (mysqli_error($con));
+			}
 			else 
 			{
-				echo "Successfully registered! <a href= 'login.php'>Click here to Login </a>";
+				echo '<div class="form-group col-md-16">
+						<div class="alert alert-danger" role="alert">
+							Successfully placed a requesition for membership card! <a href= "login.php">Click here to Login </a>.
+						</div>
+					</div>';//"Successfully placed a requesition for membership card! <a href= 'login.php'>Click here to Login </a>";
 			}
+		}
 }
 else {
 	 $error="<center><h4><font color='#FF0000'>Registration Failed Due To Error !</h4></center></font>";

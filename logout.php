@@ -1,14 +1,14 @@
 <?php
 session_start();
 if (!isset($_SESSION['userSession'])) {
-	header("Location: lan_view.php");
+	header("Location: index.php");
 } else if (isset($_SESSION['userSession'])!="") {
-	header("Location: lan_view.php");
+	header("Location: index.php");
 }
 
 	if("username"){
 	session_destroy();
 	unset($_SESSION['SESS_NAME']);
-	include'lan_view.php';
+	include'index.php';
 	}
 ?>
