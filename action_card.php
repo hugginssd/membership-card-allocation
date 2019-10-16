@@ -140,7 +140,8 @@ $(document).ready(function(){
 		}		
     });
 	// Edit row on edit button click
-	$(document).on("click", ".edit", function(){		
+	$(document).on("click", ".edit", function(){
+                         	
         $(this).parents("tr").find("td:not(:last-child)").each(function(){
 			$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
 		});		
@@ -169,6 +170,7 @@ $(document).ready(function(){
             <table class="table table-bordered">
                 <thead>
                     <tr>
+                        <th>Member id</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
                         <th>ID Number</th>
@@ -182,7 +184,7 @@ $(document).ready(function(){
                 <tbody>
                 <?php 
                   include "connection.php";
-                  $rs = mysqli_query($con,"SELECT `tblmembers`.`firstname` AS firstname, `tblmembers`.`lastname` AS lastname, `tblmembers`.`idnumber` AS idnumber, 
+                  $rs = mysqli_query($con,"SELECT `tblrequest`.`memberid` AS memberid, `tblmembers`.`firstname` AS firstname, `tblmembers`.`lastname` AS lastname, `tblmembers`.`idnumber` AS idnumber, 
                                                     `tblmembers`.`gender` AS gender,`tblmembers`.`contactnumber` AS contactnumber, `tblrequest`.`dateofrequest` AS daterequested,
                                                     `tblrequest`.`status` AS status 
                                                     FROM `tblmembers` 
@@ -190,6 +192,7 @@ $(document).ready(function(){
                                                     ON `tblrequest`.`memberid` = `tblmembers`.`id`
                                                     WHERE `tblrequest`.`status` = 'Pending'");
                   while ($row = mysqli_fetch_object($rs)){
+                          $id=$row->memberid;
                           $firstname=$row->firstname;
                           $lastname=$row->lastname;
                           $idnumber=$row->idnumber;
@@ -200,6 +203,7 @@ $(document).ready(function(){
                     ?>
             
                       <tr>
+                        <td><?php echo $id; ?></td>
                         <td><?php echo $firstname; ?></td>
                         <td><?php echo $lastname; ?></td>
                         <td><?php echo $idnumber; ?></td>
@@ -208,9 +212,22 @@ $(document).ready(function(){
                         <td><?php echo $daterequested; ?></td>
                         <td><?php echo $status; ?></td>
                         <td>
-						    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                            <button type="submit" class="btn btn-primary" name="submit" value="" ><i class="material-icons">&#xE254;</i>Edit</button>
+                            <!-- <button type="submit" class="btn btn-danger" name="submitDelete"><i class="material-icons">&#xE254;</i>Delete</button> -->
+						    <!-- <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                             <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a> -->
+                            <?php   
+                                include 'connection.php';
+                                if(isset($_POST['submit'])) {
+                                    echo 'Done1';
+                                $sql = mysqli_query($con, 'UPDATE `tblrequest` SET `status`="Approved" WHERE `memberid`='.$id);
+                                    if (!$sql)
+                                    {                                           
+                                        die (mysqli_error($con));
+                                    }
+                                }
+                            ?>
                         </td>
                     </tr>
                 </tbody>
